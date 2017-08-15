@@ -1,0 +1,14 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "13000:13000"
+  front:
+    image: ykzts/h2o:2.2.2
+    ports:
+      - "10080:80"
+    depends_on:
+      - web
+    volumes:
+      - ./config/h2o:/etc/h2o:ro
